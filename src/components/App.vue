@@ -118,8 +118,9 @@ export default {
         addStudent() {
             axios
                 .post("http://34.82.81.113:3000/students", this.newStudent)
-                .then(() => {
-                    this.fetchStudents();
+                .then((response) => {
+                    console.log("Студент доданий:", response.data);
+                    this.students.push(response.data);
                     this.newStudent = {
                         name: "",
                         group: "",
@@ -132,6 +133,7 @@ export default {
                     console.error("Помилка при додаванні студента:", error);
                 });
         },
+
         editStudent(student) {
             this.editingStudentId = student._id;
         },
