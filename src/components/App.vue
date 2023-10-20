@@ -111,8 +111,8 @@ export default {
         removeStudent(id) {
             axios
                 .delete(`http://34.82.81.113:3000/students/${id}`)
-                .then(() => {
-                    console.log("Студент видалений:", id);
+                .then(data => {
+                    console.log("Студент видалений:", data);
 
                     this.students = this.students.filter(student => student._id !== id);
                 })
