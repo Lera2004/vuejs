@@ -109,14 +109,11 @@ export default {
                 });
         },
         removeStudent(id) {
-            axios
-                .delete(`http://34.82.81.113:3000/students/${id}`)
-                .then(() => {
-                    this.fetchStudents();
+            axios.delete(`http://34.82.81.113:3000/students/${id}`)
+                .then(data => {
+                    console.log(data);
                 })
-                .catch((error) => {
-                    console.error("Помилка при видаленні студента:", error);
-                });
+
         },
         addStudent() {
             axios
@@ -141,13 +138,15 @@ export default {
         updateStudent(student) {
             axios
                 .put(`http://34.82.81.113:3000/students/${student._id}`, student)
-                .then(() => {
+                .then((response) => {
+                    console.log("Студент оновлений:", response.data);
                     this.editingStudentId = null;
                 })
                 .catch((error) => {
                     console.error("Помилка при оновленні студента:", error);
                 });
         },
+
     },
 };
 </script>
