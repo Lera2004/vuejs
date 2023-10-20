@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/axios@0.24.0"></script>
     <title>Список студентів</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
     <style>
     .highlighted-text {
@@ -113,49 +114,7 @@
 
 <body>
     <div id="app">
-        <input type="text" id="search-input" v-model="search" placeholder="Пошук за прізвищем">
-
-        <form @submit.prevent="addStudent">
-            <input type="url" v-model="newStudent.photo" placeholder="Фото">
-            <input type="text" v-model="newStudent.name" placeholder="ПІБ" required>
-            <select v-model="newStudent.group" placeholder="Група">
-                <option value="РПЗ 20 1/9">РПЗ 20 1/9</option>
-                <option value="РПЗ 20 2/9">РПЗ 20 2/9</option>
-            </select>
-            <input type="number" v-model="newStudent.mark" placeholder="Оцінка" required>
-            <input type="checkbox" v-model="newStudent.isDonePr">
-            <button type="submit">Додати</button>
-        </form>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Фото</th>
-                    <th>ПІБ</th>
-                    <th>Група</th>
-                    <th>Оцінка</th>
-                    <th>Практика</th>
-                    <th>Дії</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="student in filteredStudents" :key="student._id">
-                    <td>
-                        <img v-if="student.photo" :src="student.photo" alt="Фото студента" width="50">
-                        <img v-else src="" alt="Фото відсутнє" width="50">
-                    </td>
-                    <td><span :class="{ 'highlighted-text': student.highlighted }">{{ student.name }}</span></td>
-                    <td><span :class="{ 'highlighted-text': student.highlighted }">{{ student.group }}</span></td>
-                    <td>{{ student.mark }}</td>
-                    <td>
-                        <input type="checkbox" v-model="student.isDonePr">
-                    </td>
-                    <td>
-                        <button @click="removeStudent(student._id)">Видалити</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+   
     </div>
 
 <script src="main.js"></script>
